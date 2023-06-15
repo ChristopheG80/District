@@ -1,0 +1,55 @@
+body{
+    background: url("../../images_the_district/ibg.jpg") no-repeat center top fixed;
+    min-width: 100%;
+    width:100%;
+  }
+
+
+body h1, h2, h3, h4,h5, h6, p, a{
+    color: #970747;
+  }
+
+
+.districtColor{
+    color: #970747;
+    font-weight: bolder;
+    font-size: larger;
+}
+
+.bg-district{
+    background-color: #970747;
+    height: 6em;
+}
+
+.btn-outline-district{
+    color: #970747;
+    border-color: #970747;
+}
+
+p.plat{
+    display:flex;
+    flex-wrap: wrap;
+}
+input.districtColor{
+    caret-color: #970747;
+}
+
+.form-control:focus {
+    color: #970747 !important;
+}
+.form-check-input:focus {
+    border-color: #970747;
+    /* border-color: #86b7fe; */
+}
+
+.texte-blanc{
+  color: #FFFFFF;
+}
+
+.texte-blanc:hover{
+  color: #0F0;
+}
+
+.searchBar{
+  height: 30rem;
+}
