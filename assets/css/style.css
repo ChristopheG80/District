@@ -1,7 +1,8 @@
 body{
-    background: url("../../images_the_district/ibg.jpg") no-repeat center top fixed;
+    background: url("../../images_the_district/ibg.jpg") no-repeat center center fixed;
     min-width: 100%;
     width:100%;
+    background-position: 100%;
   }
 
 
@@ -43,13 +44,26 @@ input.districtColor{
 }
 
 .texte-blanc{
-  color: #FFFFFF;
+  color: #FFF;
 }
 
 .texte-blanc:hover{
   color: #0F0;
 }
 
+.texte-vert{
+  color: #0F0;
+}
+
+.texte-vert:hover{
+  color: #FFF;
+}
+
+
 .searchBar{
   height: 30rem;
+}
+
+#logo_nav{
+  height: 7rem;
 }

@@ -22,7 +22,11 @@ if($_SERVER["REQUEST_METHOD"] == "GET"){
                 include "view/search.php";
                 include "controller/commande_controller.php";
                 break;
-            default:
+                case "connexion":
+                    include "view/search.php";
+                    include "controller/connexion_controller.php";
+                    break;
+                default:
             include "view/search.php";
             include_once "controller/accueil_controller.php";
         }
