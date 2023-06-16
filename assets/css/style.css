@@ -1,10 +1,15 @@
+@font-face {
+  font-family: craie;
+  src: url("../font/MontegoBay.ttf");
+}
+
 body{
     background: url("../../images_the_district/ibg.jpg") no-repeat center center fixed;
     min-width: 100%;
     width:100%;
     background-position: 100%;
+    /* font-family: craie; */
   }
-
 
 body h1, h2, h3, h4,h5, h6, p, a{
     color: #970747;
@@ -22,7 +27,7 @@ body h1, h2, h3, h4,h5, h6, p, a{
     height: 6em;
 }
 
-.btn-outline-district{
+.btn-outline-district, .btn-outline-district:hover{
     color: #970747;
     border-color: #970747;
 }
@@ -40,19 +45,18 @@ input.districtColor{
 }
 .form-check-input:focus {
     border-color: #970747;
-    /* border-color: #86b7fe; */
 }
 
 .texte-blanc{
-  color: #FFF;
+  color:rgba(255, 255, 255, .75);
 }
 
 .texte-blanc:hover{
-  color: #0F0;
+  color: #FFF;
 }
 
 .texte-vert{
-  color: #0F0;
+  color:rgba(255, 255, 255, .75);
 }
 
 .texte-vert:hover{

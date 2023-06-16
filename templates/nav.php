@@ -19,7 +19,17 @@
           <a class="nav-link fw-bolder texte-blanc" href="index.php?choix=contact">Contact</a>
         </li>
         <li class="nav-item text-right">
-          <a class="nav-link fw-bolder texte-vert" href="index.php?choix=connexion">Connexion</a>
+        <?php
+        if($_SESSION['Auth'] == 'ok'){
+          ?>
+          <a class="nav-link fw-bolder texte-noir" href="index.php?choix=deconnexion">Déconnexion</a>
+        <?php
+        } else{
+?>
+<a class="nav-link fw-bolder texte-vert" href="index.php?choix=connexion">Connexion</a>
+<?php
+        } 
+     ?>   
         </li>
       </ul>
     </div>

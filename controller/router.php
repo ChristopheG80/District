@@ -22,13 +22,17 @@ if($_SERVER["REQUEST_METHOD"] == "GET"){
                 include "view/search.php";
                 include "controller/commande_controller.php";
                 break;
-                case "connexion":
-                    include "view/search.php";
-                    include "controller/connexion_controller.php";
-                    break;
-                default:
-            include "view/search.php";
-            include_once "controller/accueil_controller.php";
+            case "deconnexion":
+                include "view/search.php";
+                include "controller/deconnexion_controller.php";
+                break;
+            case "connexion":
+                include "view/search.php";
+                include "controller/connexion2_controller.php";
+                break;
+            default:
+                include "view/search.php";
+                include_once "controller/accueil_controller.php";
         }
     }
     else{
@@ -40,4 +44,9 @@ if($_SERVER["REQUEST_METHOD"] == "GET"){
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     var_dump($_POST);
+    
+    // Identifiant
+    if(isset($_POST['signing']) && $_POST['signing'] == "Connexion"){
+        include "controller/connexion_controller.php";
+    }
 }
