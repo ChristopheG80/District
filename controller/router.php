@@ -30,6 +30,11 @@ if($_SERVER["REQUEST_METHOD"] == "GET"){
                 include "view/search.php";
                 include "controller/connexion2_controller.php";
                 break;
+            case "signup":
+                include "view/search.php";
+                include "controller/signup_controller.php";
+                break;
+                
             default:
                 include "view/search.php";
                 include_once "controller/accueil_controller.php";
@@ -48,5 +53,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Identifiant
     if(isset($_POST['signing']) && $_POST['signing'] == "Connexion"){
         include "controller/connexion_controller.php";
+    }
+    if(isset($_POST['signupg']) && $_POST['signupg'] == "Connexion"){
+        include "controller/signup_controller.php";
     }
 }

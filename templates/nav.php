@@ -18,20 +18,36 @@
         <li class="nav-item text-right">
           <a class="nav-link fw-bolder texte-blanc" href="index.php?choix=contact">Contact</a>
         </li>
-        <li class="nav-item text-right">
-        <?php
-        if($_SESSION['Auth'] == 'ok'){
-          ?>
-          <a class="nav-link fw-bolder texte-noir" href="index.php?choix=deconnexion">Déconnexion</a>
-        <?php
-        } else{
-?>
-<a class="nav-link fw-bolder texte-vert" href="index.php?choix=connexion">Connexion</a>
-<?php
-        } 
-     ?>   
-        </li>
+        
+        
       </ul>
     </div>
+    <div class="collapse navbar-collapse justify-content-right" id="navbarNavDropdown3">
+      <ul class="navbar-nav">
+    
+    <?php
+        if($_SESSION['Auth'] == 'ok'){
+          ?>
+      <li class="nav-item">
+          Bonjour <?= $_SESSION['firstname'];?>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-bolder texte-noir" href="index.php?choix=deconnexion">Déconnexion</a>
+        </li>
+        <?php 
+      }else{
+?>
+        <li class="nav-item">
+          <a class="nav-link fw-bolder texte-blanc" href="index.php?choix=signup">Inscription</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-bolder texte-vert" href="index.php?choix=connexion">Connexion</a>
+        </li>
+
+      </ul>
+    </div>
+    <?php
+        } 
+     ?>   
   </div>
 </nav>
