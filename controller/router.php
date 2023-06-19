@@ -2,6 +2,7 @@
 include "utils/connexion.php";
 
 if($_SERVER["REQUEST_METHOD"] == "GET"){
+    var_dump($_GET);
     if(isset($_REQUEST['choix'])){
         $choice = $_REQUEST['choix'];
         // var_dump($choice);
@@ -34,7 +35,14 @@ if($_SERVER["REQUEST_METHOD"] == "GET"){
                 include "view/search.php";
                 include "controller/signup_controller.php";
                 break;
-                
+            case "catego":
+                $catego = $choice;
+                var_dump($catego);
+                break;
+            case "addpanier":
+                $panier = $_REQUEST['panier'];
+                include("controller/panier_controller.php");
+                break;
             default:
                 include "view/search.php";
                 include_once "controller/accueil_controller.php";
@@ -48,7 +56,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET"){
 }
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-    var_dump($_POST);
+    // var_dump($_POST);
     
     // Identifiant
     if(isset($_POST['signing']) && $_POST['signing'] == "Connexion"){
@@ -57,4 +65,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(isset($_POST['signupg']) && $_POST['signupg'] == "Connexion"){
         include "controller/signup_controller.php";
     }
+    if(isset($_POST['catego'])){
+        $catego = intval($_POST['catego']);
+        // var_dump($catego);
+        include "controller/plat_controller.php";
+    }
+    
 }

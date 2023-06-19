@@ -30,6 +30,16 @@ body h1, h2, h3, h4,h5, h6, p, a{
 .btn-outline-district, .btn-outline-district:hover{
     color: #970747;
     border-color: #970747;
+  
+}
+
+.btn-cat, .btn-cat:hover{
+  background-color: #FFF;
+  
+}
+
+.btn-cat:hover{
+  background-color: #C0C0C0;
 }
 
 p.plat{

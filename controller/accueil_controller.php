@@ -12,11 +12,6 @@ ORDER BY k.total DESC
 LIMIT 6;";
 if(!$conn->query($req)) echo "pas d'accès à la table";
 
-
-
-
-
-
 $conn2 = connect_bd(); 
 // Requete pour les plats les plus vendus 
 $req2="SELECT p.id, p.libelle, SUM(c.quantite), `image`
@@ -27,7 +22,6 @@ GROUP BY p.id
 ORDER BY SUM(c.quantite) DESC
 LIMIT 3;";
 if(!$conn2->query($req2)) echo "pas d'accès à la table";
-
 
 include "view/accueil.php";    
 

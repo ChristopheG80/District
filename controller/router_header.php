@@ -10,6 +10,12 @@ if($_SERVER["REQUEST_METHOD"] == "GET"){
             case "connexion":
                 include "controller/connexion_controller.php";
                 break;
+            case "addpanier":
+                $panier = $_REQUEST['panier'];
+                include("controller/panier2_controller.php");
+                break;
+            default:
+            break;
         }
     }
 }

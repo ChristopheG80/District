@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg sticky-top">
 <div class="container-fluid bg-district">
     <a class="navbar-brand" href="#"><img src="images_the_district/the_district_brand/logo.png" alt="The District" id="logo_nav"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,14 +15,12 @@
         <li class="nav-item">
           <a class="nav-link fw-bolder texte-blanc" href="index.php?choix=lesplats">Tous les plats</a>
         </li>
-        <li class="nav-item text-right">
+        <li class="nav-item">
           <a class="nav-link fw-bolder texte-blanc" href="index.php?choix=contact">Contact</a>
         </li>
-        
-        
       </ul>
     </div>
-    <div class="collapse navbar-collapse justify-content-right" id="navbarNavDropdown3">
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown3">
       <ul class="navbar-nav">
     
     <?php
@@ -49,5 +47,8 @@
     <?php
         } 
      ?>   
+     <!-- <div class="justify-content-end" id="navbarNavDropdown4">
+      
+    </div> -->
   </div>
 </nav>
