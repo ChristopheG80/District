@@ -1,20 +1,24 @@
 @font-face {
   font-family: craie;
-  src: url("../font/MontegoBay.ttf");
+  src: url("../font/Lobster-Regular.ttf");
+}
+@font-face {
+  font-family: pol;
+  src: "Helvetica";
 }
 
 body{
     background: url("../../images_the_district/ibg.jpg") no-repeat center center fixed;
     min-width: 100%;
     width:100%;
-    background-position: 100%;
-    /* font-family: craie; */
+    background-size: 100%;
+    font-family: craie;
+    list-style: none;
   }
 
 body h1, h2, h3, h4,h5, h6, p, a{
     color: #970747;
   }
-
 
 .districtColor{
     color: #970747;
@@ -73,11 +77,29 @@ input.districtColor{
   color: #FFF;
 }
 
-
 .searchBar{
-  height: 30rem;
+  height: 10rem;
 }
 
 #logo_nav{
   height: 7rem;
+}
+.fontpol{
+  color:black;
+  font-family: pol;
+  font-size: larger;
+  
+}
+.list_com{
+  color:black;
+  text-decoration: underline;
+}
+.bg_com{
+  background-color: rgba(255, 255, 255, .5);
+}
+.bg_footer{
+  background-color: rgba(255, 255, 255, .15);
+}
+.ended_line{
+  background-color: rgba(255, 255, 255, .15);
 }

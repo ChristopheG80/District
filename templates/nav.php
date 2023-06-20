@@ -18,6 +18,9 @@
         <li class="nav-item">
           <a class="nav-link fw-bolder texte-blanc" href="index.php?choix=contact">Contact</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link fw-bolder texte-blanc" href="index.php?choix=Gestion">Gestion</a>
+        </li>
       </ul>
     </div>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown3">
@@ -35,6 +38,9 @@
         <?php 
       }else{
 ?>
+        <li class="nav-item">
+          <a class="nav-link fw-bolder texte-blanc" href="index.php?choix=show_panier">Panier</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link fw-bolder texte-blanc" href="index.php?choix=signup">Inscription</a>
         </li>

@@ -35,6 +35,16 @@ if($_SERVER["REQUEST_METHOD"] == "GET"){
                 include "view/search.php";
                 include "controller/signup_controller.php";
                 break;
+            case "mentions":
+                include "view/mentions.php";
+                break;
+            case "pol":
+                include "view/pol.php";
+                break;
+            case "Gestion":
+                include "view/search.php";
+                include "controller/gestion/commande_controller.php";
+                break;
             case "catego":
                 $catego = $choice;
                 var_dump($catego);
@@ -70,5 +80,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         // var_dump($catego);
         include "controller/plat_controller.php";
     }
+    if(isset($_POST['Commande'])){
+        include "controller/panier_controller.php";
+    }
+    
     
 }

@@ -7,13 +7,14 @@ foreach($conn->query($req) as $row){
 
     <div class="col-xl-4 col-md-6 col-12 text-center my-2 mx-auto">
       <div class="card justify-content-end" style="width: 24rem; height:32rem;">
-        <img src="images_the_district/food/<?= $row['image']; ?>" class="card-img-top rounded" alt="<?= $row['image']; ?>" style="width: 12rem; height:12rem;">
+        <img src="images_the_district/food/<?= $row['image']; ?>" class="card-img-top rounded img-fluid" alt="<?= $row['image']; ?>" style="width: 12rem; height:12rem;">
         <div class="card-body overflow-hidden">
           <h5 class="card-title"><?= $row['libelle']; ?></h5>
+          <input type="hidden" name="libelle[<?= $row['id']; ?>]" value="<?= $row['libelle']; ?>" />
           <p class="card-text"><?= $row['description']; ?></p>
-          <p class="text-bold"><?= $row['prix']; ?><?= $devise; ?></p>
-          <p><input type="number" min="1" value="1" length="1" id="qty" class="w-25" />
-          <a href="index.php?choix=addpanier&plat=<?= $row['id']; ?>&qty=1" class="btn btn-primary">Commander</a>
+          <p><input type="hidden" name="price[<?= $row['id']; ?>]" value="<?= $row['prix']; ?>" /><?= $row['prix']; ?><?= $devise; ?></p>
+          <p><input type="number" min="0" value="" max="50" id="qty[<?= $row['id']; ?>]" class="w-25" name="qty[<?= $row['id']; ?>]"/>
+          <input type="submit" name="Commande[<?= $row['id']; ?>]" class="btn btn-primary" value="Commander" />
           </p>
         </div>
       </div>
