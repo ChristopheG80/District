@@ -15,7 +15,7 @@ class utilisateur{
     public function set_utilisateur($new_user_name=null, $new_user_email=null, $new_user_password=null){
         if(!is_null($new_user_name))$this->user_name = $new_user_name;
         if(!is_null($new_user_email))$this->user_email = $new_user_email;
-        if(!is_null($user_password))$this->user_password=$new_user_password
+        if(!is_null($new_user_password))$this->user_password=$new_user_password;
     }
     public function get_utilisateur_name(){
         return $this->user_name;        

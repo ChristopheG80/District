@@ -1,5 +1,6 @@
 <?php 
 include "utils/connexion.php";
+// include "utils/DAO.php";
 
 if($_SERVER["REQUEST_METHOD"] == "GET"){
     var_dump('$GET',$_GET);
@@ -9,6 +10,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET"){
         switch($choice){
             case "cat":
                 include "view/search.php";
+                
                 include "controller/categories_controller.php";
                 break;
             case "lesplats":

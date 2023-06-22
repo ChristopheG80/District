@@ -8,18 +8,18 @@ var_dump($_SESSION);
 //     echo 'Merci de se connecter';
 // }
 // Faire un INSERT INTO avec les Id des plats clé de qty
-$qty=$_REQUEST['qty'];
-$price=$_REQUEST['price'];
-$libelle=$_REQUEST['libelle'];
-$img=$_REQUEST['image'];
-$totaux=0;
-$article=0;
+$qty = $_REQUEST['qty'];
+$price = $_REQUEST['price'];
+$libelle = $_REQUEST['libelle'];
+$img = $_REQUEST['image'];
+$totaux = 0;
+$article = 0;
 // var_dump($qty);
 
 // echo '<br />';
 
-foreach($qty as $key => $value){
-    if($value=="" || $value==0){
+foreach ($qty as $key => $value) {
+    if ($value == "" || $value == 0) {
         unset($qty[$key]);
         unset($libelle[$key]);
         unset($price[$key]);
@@ -29,20 +29,20 @@ foreach($qty as $key => $value){
 // var_dump('Après traitement',$qty);
 // var_dump($_SESSION);
 
-foreach($qty as $key => $value){
-    $total=$price[$key] * $value;
-    $totaux +=$total;
-    $article +=$value;
+foreach ($qty as $key => $value) {
+    $total = $price[$key] * $value;
+    $totaux += $total;
+    $article += $value;
     // echo '<br />quantité= ' . $value . '<br />';
     // echo 'prix unitaire= ' . $price[$key] . '  total= ' . $total;
 
 }
 //echo '<br />Total commande = ' . $totaux;
-$_SESSION['panier']['quantite']=$qty;
-$_SESSION['panier']['price']=$price;
-$_SESSION['panier']['libelle']=$libelle;
-$_SESSION['panier']['img']=$img;
-$_SESSION['panier']['id']=$key;
+$_SESSION['panier']['quantite'] = $qty;
+$_SESSION['panier']['price'] = $price;
+$_SESSION['panier']['libelle'] = $libelle;
+$_SESSION['panier']['img'] = $img;
+$_SESSION['panier']['id'] = $key;
 
 echo '<br />';
 
