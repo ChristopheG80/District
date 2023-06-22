@@ -2,7 +2,7 @@
 include "utils/connexion.php";
 
 if($_SERVER["REQUEST_METHOD"] == "GET"){
-    var_dump($_GET);
+    var_dump('$GET',$_GET);
     if(isset($_REQUEST['choix'])){
         $choice = $_REQUEST['choix'];
         // var_dump($choice);
@@ -41,13 +41,17 @@ if($_SERVER["REQUEST_METHOD"] == "GET"){
             case "pol":
                 include "view/pol.php";
                 break;
+            case "show_panier":
+                include "controller/panier_controller.php";
+                include "view/panier.php";
+                break;
             case "Gestion":
                 include "view/search.php";
                 include "controller/gestion/commande_controller.php";
                 break;
             case "catego":
                 $catego = $choice;
-                var_dump($catego);
+                // var_dump($catego);
                 break;
             case "addpanier":
                 $panier = $_REQUEST['panier'];
@@ -66,7 +70,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET"){
 }
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-    // var_dump($_POST);
+    var_dump('$_POST',$_POST);
     
     // Identifiant
     if(isset($_POST['signing']) && $_POST['signing'] == "Connexion"){
@@ -82,6 +86,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
     if(isset($_POST['Commande'])){
         include "controller/panier_controller.php";
+    }
+    if(isset($_POST['messageDistrict']) && $_POST['messageDistrict'] == "Envoyer le message"){
+        include "controller/sendmail_controller.php";
+    }
+    if(isset($_POST['passerCommande']) && $_POST['passerCommande'] == "Commander"){
+        include "controller/reception_controller.php";
     }
     
     

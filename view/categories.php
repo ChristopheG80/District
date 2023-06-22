@@ -1,5 +1,5 @@
 <form action="index.php" method="post">
-<div class="container-fluid">
+<div class="container-fluid content">
     <div class="row">
 <?php
 foreach($conn->query($req) as $row){

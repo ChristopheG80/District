@@ -8,9 +8,10 @@
 }
 
 body{
-    background: url("../../images_the_district/ibg.jpg") no-repeat center center fixed;
-    min-width: 100%;
-    width:100%;
+    background: url("../../images_the_district/ibg.jpg") repeat top center fixed;
+    /* background-color: #FFF; */
+    /* min-width: 100%;
+    width:100%; */
     background-size: 100%;
     font-family: craie;
     list-style: none;
@@ -102,4 +103,10 @@ input.districtColor{
 }
 .ended_line{
   background-color: rgba(255, 255, 255, .15);
+}
+.content{
+  min-height: calc(100vh - 70px);
+}
+footer{
+  height: 50px;
 }

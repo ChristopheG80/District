@@ -9,7 +9,7 @@ if(isset($catego)){
 
 $where.=" active='Yes'";
 
-$req="SELECT `id`, `libelle`, `description`, `prix`, `image`, `id_categorie`, `active` FROM plat ". $where . " LIMIT 6;";
+$req="SELECT `id`, `libelle`, `description`, `prix`, `image` img, `id_categorie`, `active` FROM plat ". $where . " LIMIT 6;";
 // var_dump($req);
 if(!$conn->query($req)) echo "pas d'accès à la table";
 else{

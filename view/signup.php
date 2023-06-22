@@ -1,5 +1,5 @@
 <form action="index.php" method="post">
-    <div class="container-fluid">
+    <div class="container-fluid content">
         <div class="row">
             <div class="col-6">
                 <div class="col-12"><label for="firstnameSignUp">Prénom</label></div>

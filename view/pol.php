@@ -14,8 +14,8 @@
  
 
     <p class="fontpol">DONNÉES PERSONNELLES</p>
-    <p class="fontpol">D’une manière générale, il vous est possible de visiter le site THE DISTRICT sans communiquer aucune information personnelle vous concernant. En toute hypothèse, vous n’êtes en aucune manière obligé de transmettre ces informations à THE DISTRICT Néanmoins, en cas de refus, il se peut que vous ne puissiez pas bénéficier de certaines informations ou services que vous avez demandé. A ce titre en effet, THE DISTRICT peut être amené dans certains cas à vous demander de renseigner vos nom, prénom, adresse mail, numéro de téléphone, En fournissant ces informations, vous acceptez expressément qu’elles soient traitées par THE DISTRICT, aux fins indiquées au point 2 ci-dessous ainsi qu’aux fins rappelées à la fin de chaque formulaire.</p>
-    <p class="fontpol">Conformément au Règlement Général sur la Protection des Données (General Data Protection Régulation) adopté par le Parlement européen le 14 avril 2016, et à la Loi Informatique et Libertés du 6 janvier 1978 modifiée, THE DISTRICT vous informe des points suivants :</p>
+    <p class="fontpol">D’une manière générale, il vous est possible de visiter le site THE DISTRICT sans communiquer aucune information personnelle vous concernant. En toute hypothèse, vous n’êtes en aucune manière obligé de transmettre ces informations à THE DISTRICT Néanmoins, en cas de refus, il se peut que vous ne puissiez pas bénéficier de certaines informations ou services que vous avez demandé. A ce titre en effet, THE DISTRICT peut être amené dans certains cas à vous demander de renseigner vos nom, prénom, adresse mail, numéro de téléphone. En fournissant ces informations, vous acceptez expressément qu’elles soient traitées par THE DISTRICT, aux fins indiquées au point 2 ci-dessous ainsi qu’aux fins rappelées à la fin de chaque formulaire.</p>
+    <p class="fontpol">Conformément au Règlement Général sur la Protection des Données (General Data Protection Regulation) adopté par le Parlement européen le 14 avril 2016, et à la Loi Informatique et Libertés du 6 janvier 1978 modifiée, THE DISTRICT vous informe des points suivants :</p>
 
  
 
@@ -26,13 +26,12 @@
 <p class="fontpol">Le responsable du traitement est THE DISTRICT</p>
 <p class="fontpol">Siret :</p>
 <p class="fontpol">Tél. :</p>
-<p class="fontpol">Le site est hébergé par la société o2switch, 222 Boulevard Gustave Flaubert, 63000 Clermont-Ferrand, Capital de 100000 euros, Siret : 510 909 80700024.</p>
-
+<p class="fontpol">Le site est hébergé par la société OVH, Siège social : 2 rue Kellermann - 59100 Roubaix - France, SAS au capital de 10 174 560 euros, société immatriculée au RCS de Lille sous le numéro 537 407 926</p>
  
 
     <li>2. Finalités du traitement<li>
     <p class="fontpol">THE DISTRICT est susceptible de traiter vos Informations Personnelles :</p>
-    <p class="fontpol">(a) aux fins de communiquer avec vous sur son actualité et ses prestations par l’intermédiaire de newsletters et e-mails transactionnels; et/ou</p>
+    <p class="fontpol">(a) aux fins de communiquer avec vous sur son actualité et ses prestations par l’intermédiaire de newsletters et e-mails transactionnels et/ou</p>
     <p class="fontpol">(b) aux fins de recueillir des informations sur le comportement de l’internaute sur son site afin d’affiner les statistiques de navigation.</p>
 
  
@@ -44,7 +43,7 @@
 
     <li>4. Mesures de sécurité mises en place</li>
 
-<p class="fontpol">Un certificat SSL ainsi que plusieurs extensions de sécurités permettent une navigation sécurisée sur notre site.</p>
+<p class="fontpol">Un certificat SSL ainsi que plusieurs extensions de sécurité permettent une navigation sécurisée sur notre site.</p>
 
  
 
@@ -60,7 +59,7 @@
  
 
 <p class="fontpol">o Droit d’accès, de rectification et droit à l’effacement des données</p>
-Vous avez la faculté d’accéder aux Informations Personnelles qui vous concernent.
+<p class="fontpol">Vous avez la faculté d’accéder aux Informations Personnelles qui vous concernent.</p>
 <p class="fontpol">Cependant, en raison de l’obligation de sécurité et de confidentialité dans le traitement des données à caractère personnel qui incombe à THE DISTRICT, vous êtes informé que votre demande sera traitée sous réserve que vous rapportiez la preuve de votre identité, notamment par la production d’un scan de votre titre d’identité valide (en cas de demande par notre courrier électronique) ou d’une photocopie signée de votre titre d’identité valide (en cas de demande adressée par écrit).</p>
 <p class="fontpol">THE DISTRICT vous informe qu’il sera en droit, le cas échéant, de s’opposer aux demandes manifestement abusives (de par leur nombre, leur caractère répétitif ou systématique).</p>
 <p class="fontpol">Au titre de ce droit, la législation vous habilite à demander la rectification, la mise à jour, le verrouillage ou encore l’effacement des données vous concernant qui peuvent s’avérer le cas échéant inexactes, erronées, incomplètes ou obsolètes.</p>
