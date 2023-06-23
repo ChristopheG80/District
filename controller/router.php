@@ -1,16 +1,16 @@
-<?php 
+<?php
 include "utils/connexion.php";
 // include "utils/DAO.php";
 
-if($_SERVER["REQUEST_METHOD"] == "GET"){
-    var_dump('$GET',$_GET);
-    if(isset($_REQUEST['choix'])){
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
+    // var_dump('$GET', $_GET);
+    if (isset($_REQUEST['choix'])) {
         $choice = $_REQUEST['choix'];
         // var_dump($choice);
-        switch($choice){
+        switch ($choice) {
             case "cat":
                 include "view/search.php";
-                
+
                 include "controller/categories_controller.php";
                 break;
             case "lesplats":
@@ -63,38 +63,53 @@ if($_SERVER["REQUEST_METHOD"] == "GET"){
                 include "view/search.php";
                 include_once "controller/accueil_controller.php";
         }
-    }
-    else{
+    } else {
         include "view/search.php";
         include_once "controller/accueil_controller.php";
         // include "view/accueil.php";
     }
 }
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-    var_dump('$_POST',$_POST);
-    
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // var_dump('$_POST', $_POST);
+
     // Identifiant
-    if(isset($_POST['signing']) && $_POST['signing'] == "Connexion"){
+    if (isset($_POST['signing']) && $_POST['signing'] == "Connexion") {
         include "controller/connexion_controller.php";
     }
-    if(isset($_POST['signupg']) && $_POST['signupg'] == "Connexion"){
+    if (isset($_POST['signupg']) && $_POST['signupg'] == "Connexion") {
         include "controller/signup_controller.php";
     }
-    if(isset($_POST['catego'])){
+    if (isset($_POST['catego'])) {
         $catego = intval($_POST['catego']);
         // var_dump($catego);
         include "controller/plat_controller.php";
     }
-    if(isset($_POST['Commande'])){
+    if (isset($_POST['Commande'])) {
         include "controller/panier_controller.php";
     }
-    if(isset($_POST['messageDistrict']) && $_POST['messageDistrict'] == "Envoyer le message"){
+    if (isset($_POST['messageDistrict']) && $_POST['messageDistrict'] == "Envoyer le message") {
         include "controller/sendmail_controller.php";
     }
-    if(isset($_POST['passerCommande']) && $_POST['passerCommande'] == "Commander"){
+    if (isset($_POST['passerCommande']) && $_POST['passerCommande'] == "Commander") {
         include "controller/reception_controller.php";
     }
-    
-    
+    if (isset($_POST['last_cat_p']) && $_POST['last_cat_p'] == "<-") {
+        $page_cat--;
+        include "controller/categories_controller.php";
+    }
+    if (isset($_POST['next_cat_p']) && $_POST['next_cat_p'] == "->") {
+        $page_cat = isset($page_cat) ? $page_cat : 1;
+        $page_cat ++;
+        include "controller/categories_controller.php";
+    }
+    if (isset($_POST['last_plat_p']) && $_POST['last_plat_p'] == "<-") {
+        $page_plat--;
+        include "controller/plat_controller.php";
+    }
+    if (isset($_POST['next_plat_p']) && $_POST['next_plat_p'] == "->") {
+        $page_plat = isset($page_plat) ? $page_plat : 1;
+        $page_plat++;
+        include "controller/plat_controller.php";
+    }
 }

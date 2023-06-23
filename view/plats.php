@@ -23,7 +23,21 @@
 
       <?php
       }
-      ?>
+      $row2 = $conn2->query($reqMax);
+            while ($donnees = $row2->fetch()) {
+                $platMax = $donnees['max'];
+            }
+            $pages_plat = ceil($platMax / 6);
+            
+
+            ?>
+            <div class="col-12 justify-content-center text-center">
+                <input type="hidden" value="<?= isset($page_plat) ? $page_plat : 8; ?>" name="curr_plat_p" id="curr_plat_p" />
+                <input type="submit" value="<-" name="last_plat_p" id="last_plat_p" class="btn btn-outline-district districtColor mx-3 <?= $page_plat == 1 ? 'invisible' : ''; ?>" />
+                <input type="submit" value="->" name="next_plat_p" id="next_plat_p" class="btn btn-outline-district districtColor mx-3 <?= $page_plat == $pages_plat ? 'invisible' : ''; ?>" />
+                <p><?= $page_plat; ?>/<?= $pages_plat; ?></p>
+
+            </div>
 
     </div>
   </div>

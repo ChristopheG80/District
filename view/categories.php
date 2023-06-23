@@ -4,7 +4,7 @@
             <?php
             foreach ($conn->query($req) as $row) {
             ?>
-                <div class="col-xl-4 col-md-6 col-12 text-center my-3">
+                <div class="col-xl-4 col-md-6 col-12 text-center my-3 mx-auto">
                     <div class="row">
                         <div class="col-12"><img src="images_the_district/category/<?= $row['image']; ?>" class="rounded-3 my-1" width="240em" /></div>
                         <div class="col-12">
@@ -14,7 +14,21 @@
                 </div>
             <?php
             }
+            $row2 = $conn2->query($reqMax);
+            while ($donnees = $row2->fetch()) {
+                $catMax = $donnees['max'];
+            }
+            $pages_cat = ceil($catMax / 6);
+            
+
             ?>
+            <div class="col-12 justify-content-center text-center">
+                <input type="hidden" value="<?= isset($page_cat) ? $page_cat : 8; ?>" name="curr_cat_p" id="curr_cat_p" />
+                <input type="submit" value="<-" name="last_cat_p" id="last_cat_p" class="btn btn-outline-district districtColor mx-3 <?= $page_cat == 1 ? 'invisible' : ''; ?>" />
+                <input type="submit" value="->" name="next_cat_p" id="next_cat_p" class="btn btn-outline-district districtColor mx-3 <?= $page_cat == $pages_cat ? 'invisible' : ''; ?>" />
+                <p><?= $page_cat; ?>/<?= $pages_cat; ?></p>
+
+            </div>
         </div>
     </div>
 </form>
