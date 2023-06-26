@@ -10,14 +10,16 @@
         <div class="col-4 text-center bg_com my-1"><a href="#prepa" class="btn btn-outline-district">Préparation</a></div>
         <div class="col-4 text-center bg_com my-1"><a href="#livraison" class="btn btn-outline-district">Livraison</a></div>
         <div class="col-4 text-center bg_com my-1"><a href="#terminee" class="btn btn-outline-district">Livrée</a></div>
+        
         <div class="col-12 text-center bg_com" id="prepa"><h1 class="list_com">Commandes en préparation</h1></div>
         <?php
         foreach($conn_enPrep->query($req_enPrep) as $row_enPrep){
         ?>
-        <div class="col-3 my-2 ended_line"><h1><?= substr($row_enPrep['cmd'],0,10); ?></h1></div>
+        <div class="col-2 my-2 ended_line"><h1><?= substr($row_enPrep['cmd'],0,10); ?></h1></div>
         <div class="col-1 my-2 ended_line"><h2><?= $row_enPrep['qty']; ?></h2></div>
-        <div class="col-2 my-2 ended_line"><h2><?= substr($row_enPrep['cmd'],10); ?></h2></div>
-        <div class="col-3 my-2 ended_line"><h2><?= $row_enPrep['lib']; ?></h2></div>
+        <div class="col-1 my-2 ended_line"><h2><?= substr($row_enPrep['cmd'],11,5); ?></h2></div>
+        <div class="col-1 my-2 ended_line"><h2><?= $row_enPrep['lib']; ?></h2></div>
+        <div class="col-4 my-2 ended_line"><h2><?= $row_enPrep['nom']; ?>&nbsp;-&nbsp;<?= $row_enPrep['adress']; ?></h2></div>
         <div class="col-1 my-2 ended_line"><img src="images_the_district/food/<?= $row_enPrep['img']; ?>" width="50" height="50" class="border border-danger border-4" /></div>
         <div class="col-2 my-2 ended_line"><input type="submit" name="enPrep<?= $row_enPrep['id_com']; ?>" value="Préparée" class="btn btn-danger btn-lg"/></div>
         <?php
