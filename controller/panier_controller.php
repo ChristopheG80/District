@@ -1,6 +1,6 @@
 <?php
 
-var_dump($_SESSION);
+//var_dump($_SESSION);
 // if($_SESSION['Auth']=="ok"){
 //     echo 'vous êtes dans le panier';
 // }

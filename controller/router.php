@@ -1,6 +1,6 @@
 <?php
 include "utils/connexion.php";
-// include "utils/DAO.php";
+include "utils/DAO.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     // var_dump('$GET', $_GET);
@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                 include "controller/plat_controller.php";
                 break;
             case "contact":
-                include "view/search.php";
+                //include "view/search.php";
                 include "controller/contact_controller.php";
                 break;
             case "commande":
@@ -51,6 +51,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                 include "view/search.php";
                 include "controller/gestion/commande_controller.php";
                 break;
+                case "admin":
+                    include "view/search.php";
+                    include "controller/admin/admin.php";
+                    break;
             case "catego":
                 $catego = $choice;
                 // var_dump($catego);
@@ -112,4 +116,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $page_plat++;
         include "controller/plat_controller.php";
     }
+    if (isset($_POST['searchbtn']) && $_POST['searchbtn'] == "Rechercher") {
+        include "view/search.php";
+        include "controller/searchResult_controller.php";
+    }
+    
+    //searchbtn
 }

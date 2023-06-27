@@ -43,9 +43,11 @@ $mail->Body = $_POST['textDistrict'];
 if ($mail){
     try {
         $mail->send();
+        $infoMail = 'Email envoyé avec succès';
         echo 'Email envoyé avec succès';
         } catch (Exception $e) {
         echo "L'envoi de mail a échoué. L'erreur suivante s'est produite : ", $mail->ErrorInfo;
+        $infoMail = 'Votre email n\'a pu être envoyé';
         }
 }
 

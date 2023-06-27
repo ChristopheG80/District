@@ -40,6 +40,9 @@
       }else{
 ?>
         <li class="nav-item">
+          <a class="nav-link fw-bolder texte-blanc" href="index.php?choix=admin">Admin</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link fw-bolder texte-blanc" href="index.php?choix=show_panier">Panier</a>
         </li>
         <li class="nav-item">

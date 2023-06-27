@@ -38,9 +38,9 @@
     <div class="row">
         <div class="col-12 justify-content-center align-items-center searchBar">
             <nav class="navbar justify-content-center align-items-center">
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2 districtColor" type="search" placeholder="Recherche" aria-label="Recherche" id="searchbar" autocomplete="no">
-                    <button class="btn btn-outline-district" type="submit" id="searchbtn">Search</button>
+                <form action="index.php" method="POST" class="d-flex">
+                    <input class="form-control me-2 districtColor" type="search" placeholder="Recherche" value="<?= $toto=isset($_POST['searchbar'])?$_POST['searchbar']:'';?>" aria-label="Recherche" name="searchbar" id="searchbar" autocomplete="no">
+                    <input class="btn btn-outline-district" type="submit" id="searchbtn" name="searchbtn" value="Rechercher" />
                 </form>
             </nav>
         </div>

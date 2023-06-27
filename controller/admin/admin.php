@@ -12,12 +12,6 @@ if (!$conn->query($req)) echo "pas d'accès à la table";
 
 ?>
 
-<div class="col-12">Sauvegarder la base</div>
-<div class="col-12"><input type="submit" name="sauvegarderBase" value="Sauvegarder" /></div>
-
-
-<div class="col-12">Restaurer la base</div>
-<div class="col-12"><input type="submit" name="restaurerBase" value="Restaurer" /></div>
 
 
 
@@ -25,12 +19,6 @@ if (!$conn->query($req)) echo "pas d'accès à la table";
 <?php
 
 
-foreach ($conn->query($req) as $row) {
-    var_dump($row[0]);
-    foreach($row[0] as $key2 => $row2){
-        echo $row . '<br />';
-    }
-}
 
 
 

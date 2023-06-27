@@ -1,13 +1,14 @@
 <?php
 
 include "mail_controller.php";
+// var_dump('POST', $_POST);
+$emailCust=$_POST['emailDistrict'];
+
 // On va utiliser le SMTP
 // Expéditeur du mail - adresse mail + nom (facultatif)
 $mail->setFrom('from@thedistrict.com', 'The District Company');
-
 // Destinataire(s) - adresse et nom (facultatif)
 $mail->addAddress($emailCust);
-
 //Adresse de reply (facultatif)
 $mail->addReplyTo("reply@thedistrict.com", "Reply");
 
@@ -15,15 +16,17 @@ $mail->addReplyTo("reply@thedistrict.com", "Reply");
 $mail->isHTML(true);
 
 // Sujet du mail
-$Subject="Accusé de réception de commande";
-$mail->Subject = $Subject;
+$sujet='Accus &#233; de reception de commande';
+$mail->Subject = $sujet;
 
 // Corps du message
+$messBody=$_POST['textDistrict'];
 $mail->Body = $messBody;
+
 
 // On envoie le mail dans un block try/catch pour capturer les éventuelles erreurs
 
-var_dump($mail);
+//  var_dump($mail);
 // die();
 if ($mail){
     try {
@@ -35,20 +38,4 @@ if ($mail){
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//include "view/contact.php";
+include "view/contact.php";

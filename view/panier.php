@@ -2,7 +2,8 @@
 
 
 
-// var_dump($_SESSION);
+//var_dump($_SESSION['panier']);
+$emptyBasket = empty($_SESSION['panier']['quantite']);
 $qty2 =      $_SESSION['panier']['quantite'];
 $price2 =    $_SESSION['panier']['price'];
 $libelle2 =  $_SESSION['panier']['libelle'];
@@ -14,6 +15,13 @@ $key2 =      $_SESSION['panier']['id'];
     <div class="container-fluid content">
         <div class="row">
             <?php
+            //var_dump('Panier Vide',$emptyBasket);
+            if($emptyBasket){
+                ?>
+                <div class="col-12 text-center bg_com"><br><br><br><br><br><br><br><br><br><br><br><br>Votre panier est vide</div>    
+                <?php
+
+            }else{
             foreach ($qty2 as $key => $value) {
             ?>
                 <div class="col-3 my-1 bg_com districtColor"><?= $libelle2[$key]; ?></div>
@@ -38,6 +46,9 @@ $key2 =      $_SESSION['panier']['id'];
             <label for="nameCust">Vos nom prénom </label><input type="text" name="nameCust" id="nameCust" class="districtColor">
 
             <div class="col-12"><input type="submit" class="btn btn-outline-district" value="Commander" name="passerCommande" /></div>
+        <?php
+        }
+        ?>
         </div>
     </div>
 </form>

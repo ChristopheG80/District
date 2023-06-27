@@ -16,24 +16,4 @@ $mail->Host       = 'localhost';
 $mail->SMTPAuth   = false;    
 
 // On configure le port SMTP (MailHog)
-$mail->Port       = 1025;                                   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-include "view/contact.php";
+$mail->Port       = 1025;

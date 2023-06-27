@@ -6,14 +6,20 @@
   font-family: pol;
   src: "Helvetica";
 }
+@font-face {
+  font-family: dislexic;
+  src: "OpenDyslexicAlta-Regular.otf";
+}
 
 body{
-    background: url("../../images_the_district/ibg.jpg") repeat top center fixed;
-    /* background-color: #FFF; */
+    /* background: url("../../images_the_district/ibg.jpg") repeat top center fixed; */
+    background-color: #FFF;
     /* min-width: 100%;
     width:100%; */
     background-size: 100%;
-    font-family: craie;
+    /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
+    font-family: dislexic;
+    /* font-family: craie; */
     list-style: none;
   }
 
