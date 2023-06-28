@@ -3,7 +3,7 @@
         <div class="col-12 justify-content-center align-items-center districtColor text-center">
         <h1>Résultat pour les catégories</h1>
         </div>
-
+        
         <?php
         
         $zzz=true;
@@ -28,13 +28,14 @@
         <div class="col-12 justify-content-center align-items-center districtColor text-center">
         <h1>Résultat pour les plats</h1>
         </div>
+        
         <?php
         $zzz=true;
         foreach ($conn_plat->query($req_plat) as $row) {
         $zzz=false;
         ?>
-            <div class="col-xl-4 col-md-6 col-12 text-center my-2 mx-auto">
-                <div class="card justify-content-end" style="width: 24rem; height:32rem;">
+            <div class="col-xl-4 col-md-6 col-12 justify-content-center align-items-center text-center my-2 mx-auto d-flex">
+                <div class="card justify-content-center align-items-center text-center bg-light" style="width: 24rem; height:32rem;">
                     <img src="images_the_district/food/<?= $row['img']; ?>" class="card-img-top rounded img-fluid" alt="<?= $row['img']; ?>" style="width: 12rem; height:12rem;">
                     <input type="hidden" name="image[<?= $row['id']; ?>]" value="<?= $row['img']; ?>" />
                     <div class="card-body overflow-hidden">
@@ -60,6 +61,6 @@
             <?php
         }
         ?>
-
+        
     </div>
     <script src="assets/js/script_search.js"></script>

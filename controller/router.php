@@ -1,6 +1,6 @@
 <?php
-include "utils/connexion.php";
-include "utils/DAO.php";
+include_once "utils/connexion.php";
+include_once "utils/DAO.class.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     // var_dump('$GET', $_GET);
@@ -51,10 +51,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                 include "view/search.php";
                 include "controller/gestion/commande_controller.php";
                 break;
-                case "admin":
-                    include "view/search.php";
-                    include "controller/admin/admin.php";
-                    break;
+            case "admin":
+                //include "view/search.php";
+                include "controller/admin/admin.php";
+                break;
             case "catego":
                 $catego = $choice;
                 // var_dump($catego);
@@ -75,7 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // var_dump('$_POST', $_POST);
+    var_dump('$_POST', $_POST);
 
     // Identifiant
     if (isset($_POST['signing']) && $_POST['signing'] == "Connexion") {

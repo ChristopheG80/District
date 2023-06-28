@@ -20,7 +20,7 @@
             <?php
             foreach ($conn2->query($req2) as $row) {
             ?>
-                <div class="col-xl-4 col-md-6 col-12 text-center my-2 mx-auto">
+                <div class="col-xl-4 col-md-6 col-12 text-center my-2 mx-auto d-flex">
           <div class="card justify-content-end" style="width: 24rem; height:32rem;">
             <img src="images_the_district/food/<?= $row['img']; ?>" class="card-img-top rounded img-fluid" alt="<?= $row['img']; ?>" style="width: 12rem; height:12rem;">
             <input type="hidden" name="image[<?= $row['id']; ?>]" value="<?= $row['img']; ?>" />

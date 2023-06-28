@@ -1,6 +1,6 @@
 <?php
 
-$conn = connect_bd();
+//$conn = connect_bd();
 // Requete pour les catégories les plus populaires limitée à 6
 // $req="SELECT c.id, c.libelle, c.image, c.active, SUM(k.total) 
 // FROM categorie AS c
@@ -22,10 +22,21 @@ $conn = connect_bd();
 // ORDER BY SUM(c.quantite) DESC
 // LIMIT 3;";
 // if(!$conn2->query($req2)) echo "pas d'accès à la table";
+//var_dump('coucou1');
+$catAll = new categorie();
+$catPop= $catAll->showCatPop();
 
+// var_dump($catAll,'ùlkgmerjmgemrgjmeri');
+// echo '<br>';echo '<br>';echo '<br>';echo '<br>';echo '<br>';
+// var_dump($catPop,'ùlkgmerjmgemrgjmeri');
+// echo '<br>';echo '<br>';echo '<br>';echo '<br>';echo '<br>';
 
+$platCook = new plat();
+// var_dump('platPOOOOOOPPP',$platCook,'Fin');
+$platpopulair = $platCook->showPlatPopulo();
+// var_dump('début_platPOP', $platpopulair, 'fin2');
 
-
+// var_dump('platPOOOOOOPPP',$platAll);
 include "view/accueil.php";    
 
 
