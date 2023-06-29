@@ -4,23 +4,44 @@ include "../../utils/connexion.php";
 
 $conn = connect_bd();
 
-$req="SHOW TABLES";
+$req = "SHOW TABLES";
 
 if (!$conn->query($req)) echo "pas d'accès à la table";
 
-// var_dump($conn);
+foreach ($conn->query($req) as $rowTable) {
+    $choixTables = empty($choixTables) ? $rowTable : $choixTables;
+}
+
+$choixTables = !is_null($_POST['tableN']) ? $_POST['tableN'] : $choixTables;
+
+foreach ($choixTables as $cTable) {
+    $reqTable = "SELECT * FROM " . $cTable . ";";
+    $nomTable = $cTable;
+}
+
+$tablo_cat = array("id", "libelle", "image", "active");
+$tablo_com = array("id", "id_plat", "quantite", "total", "date_commande", "etat", "nom_client", "telephone_client", "email_client", "adresse_client");
+$tablo_pla = array("id", "libelle", "description", "prix", "image", "id_categorie", "active");
+$tablo_uti = array("id", "nom_prenom", "email", "password");
 
 
 
-//var_dump('Coucouvvvvvvv',$_POST['tableN']);
-// $reqTable="SELECT * FROM sys.columns WHERE object_id = OBJECT_ID('dbo.maTable')";
-// $nomTablee = isset($_POST['tableN']) && !is_null($_POST['tableN'])?$_POST['tableN']:'';
-// $nomTablee = isset($_POST['tableN']) && !is_null($_POST['tableN'])?$_POST['tableN']:'categorie';
-// $reqTable = "SELECT * FROM " . $nomTablee;
-// var_dump($reqTable);
 
-//if (!$conn->query($reqTable)) echo "pas d'accès à la table";
+if (!$conn->query($reqTable)) echo "pas d'accès à la table";
 
+$reqField = "SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'" . $nomTable . "';";
 
+if (!$conn->query($reqField)) echo "pas d'accès à la table";
+$cpt = 0;
+foreach ($conn->query($reqField) as $rowFields) {
+    // foreach($rowFields as $rowField){
+    var_dump($rowFields['COLUMN_NAME']);
+    // var_dump($rowFields['COLUMN_NAME']);
+    // var_dump($rowFields);
+    $cpt++;
+    // var_dump($rowFields);
+
+}
+echo '<br>';
+var_dump($cpt);
 include "view/admin/admin.php";
-

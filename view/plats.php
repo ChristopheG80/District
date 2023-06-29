@@ -1,3 +1,6 @@
+<?php
+var_dump(isset($_SESSION['panier']['quantite']));
+?>
 <form action="index.php" method="post" name="F_Plats">
   <div class="container-fluid justify-content-center content">
     <div class="row">
@@ -32,7 +35,7 @@
 
             ?>
             <div class="col-12 justify-content-center text-center">
-                <input type="hidden" value="<?= isset($page_plat) ? $page_plat : 8; ?>" name="curr_plat_p" id="curr_plat_p" />
+                <input type="hidden" value="<?= isset($page_plat) ? $page_plat : 1; ?>" name="curr_plat_p" id="curr_plat_p" />
                 <input type="submit" value="<-" name="last_plat_p" id="last_plat_p" class="btn btn-outline-district districtColor mx-3 <?= $page_plat == 1 ? 'invisible' : ''; ?>" />
                 <input type="submit" value="->" name="next_plat_p" id="next_plat_p" class="btn btn-outline-district districtColor mx-3 <?= $page_plat == $pages_plat ? 'invisible' : ''; ?>" />
                 <p><?= $page_plat; ?>/<?= $pages_plat; ?></p>

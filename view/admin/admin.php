@@ -1,8 +1,10 @@
-<form action="index;php" method="post">
+<form action="index.php" method="post">
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 text-center">
                 <h1>Administration de la base de données</h1>
+                <?= (isset($nomTable))?'<h2>pour la table <strong>' . $nomTable . '</strong></h2>':'';?>
+                
             </div>
             <div class="col-1">
                 <?php
@@ -25,18 +27,26 @@
             </div>
             <div class="col-10">
                 <?php
-                foreach ($conn->query($reqTableCat) as $row) {
-                ?>
+                
+                
+                
+                foreach ($conn->query($reqTable) as $rows) {
+                    ?>
                     <div class="col-12 text-center my-2">
-
-                    </div>
+                    <?php
+                    for($i=0; $i < count($rows); $i++){
+                    // foreach($rows as $row){
+                ?>
+                   <?= $rows[$i] . '---'; ?>  
                 <?php
                 }
                 ?>
-
+                    </div>
+                    <?php
+                }
+                ?>
 
                 <div class="col-12 text-center my-2"><label for="">Label</label><input type="text" value="" id="" name="" /></div>
-
                 <div class="col-12 text-center my-2"><label for="">Label</label><input type="text" value="" id="" name="" /></div>
                 <div class="col-12 text-center my-2"><label for="">Label</label><input type="file" value="" id="" name="" /></div>
                 <div class="col-12 text-center my-2"><label for="">Label</label><input type="text" value="" id="" name="" /></div>

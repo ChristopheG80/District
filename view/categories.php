@@ -1,3 +1,6 @@
+<?php
+var_dump(isset($_SESSION['panier']['quantite']));
+?>
 <form action="index.php" method="post">
     <div class="container-fluid content">
         <div class="row">

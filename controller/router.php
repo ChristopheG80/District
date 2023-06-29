@@ -120,6 +120,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         include "view/search.php";
         include "controller/searchResult_controller.php";
     }
+    if (isset($_POST['tableN'])) {
+        include "controller/admin/admin.php";
+    }
     
     //searchbtn
 }

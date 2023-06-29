@@ -2,7 +2,7 @@
 // include_once "connexion.php";
 $conn = connect_bd();
 
-Class toto
+class toto
 {
     private $user_name;
     private $user_email;
@@ -11,7 +11,6 @@ Class toto
     {
         $this->user_name = $user_name;
         $this->user_email = $user_email;
-    
     }
 
     public function set_utilisateur($new_user_name = null, $new_user_email = null)
@@ -31,12 +30,11 @@ Class toto
     {
         return $this->user_email;
     }
-    
 }
 
-$catPop = new toto('toto','toto@titi.com');
+$catPop = new toto('toto', 'toto@titi.com');
 
-Class utilisateur
+class utilisateur
 {
     private $user_name;
     private $user_email;
@@ -71,17 +69,64 @@ Class utilisateur
     {
         return $this->user_password;
     }
-    
-    // A revoir
+    public function deleteUser($id)
+    {
+        $conn = connect_bd();
+        $req = $conn->prepare("DELETE FROM `utilisateur` WHERE `id`=:ide");
+        $req->bindValue(':ide', $id, PDO::PARAM_INT);
+        $req->execute();
+        return $req->fetchAll();
+    }
+    public function updateUser($id, $nom_prenom, $email, $password)
+    {
+        $conn = connect_bd();
+        $req = $conn->prepare("UPDATE `utilisateur` SET `nom_prenom`=:nom_prenom,`email`=:mail,`password`=:passwrd WHERE `id`=:ide");
+        $req->bindValue(':ide', $id, PDO::PARAM_INT);
+        $req->bindValue(':nom_prenom', $nom_prenom, PDO::PARAM_STR);
+        $req->bindValue(':mail', $email, PDO::PARAM_STR);
+        $req->bindValue(':passwrd', $password, PDO::PARAM_STR);
+        $req->execute();
+        return $req->fetchAll();
+    }
+    public function newUser($nom_prenom, $email, $password)
+    {
+        $conn = connect_bd();
+        $req = $conn->prepare("INSERT INTO `utilisateur`(`nom_prenom`, `email`, `password`) VALUES (:nom_prenom,:mail,:passwrd)");
+        $no_pr = '\'%' . $nom_prenom . '%\'';
+        $mail = '\'%' . $email . '%\'';
+        $psswrd = '\'%' . $password . '%\'';
+        $req->bindValue(':nom_prenom', $no_pr, PDO::PARAM_STR);
+        $req->bindValue(':mail', $mail, PDO::PARAM_STR);
+        $req->bindValue(':passwrd', $psswrd, PDO::PARAM_STR);
+        $req->execute();
+        return $req->fetchAll();
+    }
+    public function showAllUser()
+    {
+        $conn = connect_bd();
+        $req = $conn->prepare("SELECT `id`, `nom_prenom`, `email`, `password` FROM `utilisateur`;");
+        $req->execute();
+        return $req->fetchAll();
+    }
+
+
     public function search_utilisateur($nom_prenom, $email, $password)
     {
-        $req = 'SELECT `nom_prenom`, `email`, `password`, `id` FROM `utilisateur` 
-        WHERE `nom_prenom` LIKE \'%' . $nom_prenom . '%\' OR `email` LIKE \'%' . $email . '%\' OR `password` LIKE \'%' . $password . '%\';';
-        return $req;
+        $conn = connect_bd();
+        $req = $conn->prepare("SELECT `nom_prenom`, `email`, `password`, `id` FROM `utilisateur` 
+        WHERE `nom_prenom` LIKE :nom_prenom OR `email` LIKE :mail OR `password` LIKE :passwrd ;");
+        $no_pr = '\'%' . $nom_prenom . '%\'';
+        $mail = '\'%' . $email . '%\'';
+        $psswrd = '\'%' . $password . '%\'';
+        $req->bindValue(':nom_prenom', $no_pr, PDO::PARAM_STR);
+        $req->bindValue(':mail', $mail, PDO::PARAM_STR);
+        $req->bindValue(':passwrd', $psswrd, PDO::PARAM_STR);
+        $req->execute();
+        return $req->fetchAll();
     }
 }
 
-Class commande
+class commande
 {
     public $id;
     public $id_plat;
@@ -93,21 +138,6 @@ Class commande
     public $telephone_client;
     public $email_client;
     public $adresse_client;
-
-    // public function __construct($id, $id_plat, $quantite, $total, $date_commande, $etat, $nom_client, $telephone_client, $email_client, $adresse_client)
-    // {
-    //     $this->id = $id;
-    //     $this->id_plat = $id_plat;
-    //     $this->quantite = $quantite;
-    //     $this->total = $total;
-    //     $this->date_commande = $date_commande;
-    //     $this->etat = $etat;
-    //     $this->nom_client = $nom_client;
-    //     $this->telephone_client = $telephone_client;
-    //     $this->email_client = $email_client;
-    //     $this->adresse_client = $adresse_client;
-    // }
-
 
     public function set_commande($id = null, $id_plat = null, $quantite = null, $total = null, $date_commande = null, $etat = null, $nom_client = null, $telephone_client = null, $email_client = null, $adresse_client = null)
     {
@@ -163,6 +193,14 @@ Class commande
         return $this->adresse_client;
     }
 
+    public function showAllcommande()
+    {
+        $conn = connect_bd();
+        $req = $conn->prepare("SELECT `id`, `id_plat`, `quantite`, `total`, `date_commande`, `etat`, `nom_client`, `telephone_client`, `email_client`, `adresse_client` FROM `commande`;");
+        $req->execute();
+        return $req;
+    }
+
     private function delete_commande_livree()
     {
         $req = 'DELETE 
@@ -172,7 +210,7 @@ Class commande
     }
 }
 
-Class categorie
+class categorie
 {
     public $id;
     public $libelle;
@@ -235,18 +273,26 @@ Class categorie
     }
     public function showCatAll($offset = 0, $limit = 6, $active = "Yes")
     {
-        $conn=connect_bd();
+        $conn = connect_bd();
         $req = $conn->prepare("SELECT id, libelle, `image` img, active FROM categorie WHERE active=:activ LIMIT :limite OFFSET :ofset;");
         $req->bindValue(':activ', $active, PDO::PARAM_STR);
         $req->bindValue(':limite', $limit, PDO::PARAM_INT);
         $req->bindValue(':ofset', $offset, PDO::PARAM_INT);
         $req->execute();
         return $req->fetchAll();
-        
     }
+
+    public function showAllCat()
+    {
+        $conn = connect_bd();
+        $req = $conn->prepare("SELECT id ide, libelle lib, `image` img, active FROM categorie;");
+        $req->execute();
+        return $req->fetchAll();
+    }
+
     public function showCatPop($limit = 6, $active = "Yes", $etat = "Annulée")
     {
-        $conn=connect_bd();
+        $conn = connect_bd();
         $req = $conn->prepare("SELECT c.id, c.libelle, c.image img, c.active, SUM(k.total) 
                                     FROM categorie c
                                     JOIN plat p ON c.id = p.id_categorie
@@ -263,7 +309,7 @@ Class categorie
     }
 }
 
-Class plat
+class plat
 {
 
     public $id;
@@ -319,7 +365,32 @@ Class plat
         $actif = 'no';
         $req->bindValue(':inactif', $actif, PDO::PARAM_STR);
         $req->execute();
-        //$req->fetchAll();
+        $req->fetchAll();
+        return $req;
+    }
+    public function deletePlat($id)
+    {
+        $conn = connect_bd();
+        $req = $conn->prepare('DELETE FROM `plat` WHERE `id`=:ide;');
+        $req->bindValue(':ide', $id, PDO::PARAM_INT);
+        $req->execute();
+        $req->fetchAll();
+        return $req;
+    }
+    public function updatePlat($id, $libelle, $descr, $prix, $image, $id_cat, $actif)
+    {
+        $conn = connect_bd();
+        $req = $conn->prepare("UPDATE `plat` SET `libelle`=:lib,`description`=:descr,`prix`=:prix,`image`=:img,
+        `id_categorie`=id_cat,`active`=:actif WHERE `id`=:ide");
+        $req->bindValue(':ide', $id, PDO::PARAM_INT);
+        $req->bindValue(':lib', $libelle, PDO::PARAM_STR);
+        $req->bindValue(':descr', $descr, PDO::PARAM_STR);
+        $req->bindValue(':prix', $prix, PDO::PARAM_STR);
+        $req->bindValue(':img', $image, PDO::PARAM_STR);
+        $req->bindValue(':actif', $actif, PDO::PARAM_STR);
+        $req->bindValue(':id_cat', $id_cat, PDO::PARAM_INT);
+        $req->execute();
+        $req->fetchAll();
         return $req;
     }
     public function get_plat_lim($limite = 6, $offset = 0)
@@ -355,9 +426,8 @@ Class plat
         $req->bindValue(':actif', $active, PDO::PARAM_STR);
         $req->execute();
         return $req->fetchAll();
-        
     }
-    public function showPlatPopulo($active = 'Yes', $limite = 3, $etat='Annulée')
+    public function showPlatPopulo($active = 'Yes', $limite = 3, $etat = 'Annulée')
     {
         $conn = connect_bd();
         $req = $conn->prepare("SELECT p.id ide, p.libelle lib, p.image img, p.description descr, p.prix prix, id_categorie idcat, SUM(c.quantite) 
@@ -370,6 +440,22 @@ Class plat
         $req->bindValue(':etat', $etat, PDO::PARAM_STR);
         $req->bindValue(':actif', $active, PDO::PARAM_STR);
         $req->bindValue(':limite', $limite, PDO::PARAM_INT);
+        $req->execute();
+        return $req->fetchAll();
+    }
+    public function showAllPlat()
+    {
+        $conn = connect_bd();
+        $req = $conn->prepare("SELECT id ide, libelle lib, `image` img, `description` descr, prix, id_categorie idcat FROM plat;");
+        $req->execute();
+        return $req->fetchAll();
+    }
+    public function platCatchange($id, $id_cat)
+    {
+        $conn = connect_bd();
+        $req = $conn->prepare("UPDATE `plat` SET `id_categorie`=:id_cat WHERE `id`=:ide");
+        $req->bindValue(':ide', $id, PDO::PARAM_INT);
+        $req->bindValue(':id_cat', $id_cat, PDO::PARAM_INT);
         $req->execute();
         return $req->fetchAll();
     }

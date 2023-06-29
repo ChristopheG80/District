@@ -1,23 +1,18 @@
 <?php
 
-//var_dump($_SESSION);
-// if($_SESSION['Auth']=="ok"){
-//     echo 'vous êtes dans le panier';
-// }
-// else{
-//     echo 'Merci de se connecter';
-// }
-// Faire un INSERT INTO avec les Id des plats clé de qty
 $qty = $_REQUEST['qty'];
 $price = $_REQUEST['price'];
 $libelle = $_REQUEST['libelle'];
 $img = $_REQUEST['image'];
 $totaux = 0;
 $article = 0;
+
+
 // var_dump($qty);
 
 // echo '<br />';
 
+// Pour enlever les éléments vides qui arrêtent le foreach
 foreach ($qty as $key => $value) {
     if ($value == "" || $value == 0) {
         unset($qty[$key]);
@@ -29,6 +24,7 @@ foreach ($qty as $key => $value) {
 // var_dump('Après traitement',$qty);
 // var_dump($_SESSION);
 
+
 foreach ($qty as $key => $value) {
     $total = $price[$key] * $value;
     $totaux += $total;
@@ -37,12 +33,65 @@ foreach ($qty as $key => $value) {
     // echo 'prix unitaire= ' . $price[$key] . '  total= ' . $total;
 
 }
-//echo '<br />Total commande = ' . $totaux;
-$_SESSION['panier']['quantite'] = $qty;
-$_SESSION['panier']['price'] = $price;
-$_SESSION['panier']['libelle'] = $libelle;
-$_SESSION['panier']['img'] = $img;
-$_SESSION['panier']['id'] = $key;
+echo '<br />';
+
+var_dump(isset($_SESSION['panier']['quantite']));
+if (isset($_SESSION['panier']['quantite'])) {
+
+    // On sauve ce qui est dans le panier
+
+    $panierQty = $_SESSION['panier']['quantite'];
+    $panierPrice = $_SESSION['panier']['price'];
+    $panierLibelle = $_SESSION['panier']['libelle'];
+    $panierImg = $_SESSION['panier']['img'];
+    $panierKey = $_SESSION['panier']['id'];
+
+    // On efface le contenu de la session
+    unset($_SESSION['panier']['quantite']);
+    unset($_SESSION['panier']['price']);
+    unset($_SESSION['panier']['libelle']);
+    unset($_SESSION['panier']['img']);
+    unset($_SESSION['panier']['id']);
+
+
+    // On ajoute au tablo temporaire les plats choisis
+    array_push($panierQty, $qty);
+    array_push($panierPrice, $price);
+    array_push($panierLibelle, $libelle);
+    array_push($panierImg, $img);
+    array_push($panierKey, $key);
+
+
+    var_dump('Après ArrayPush', $panierQty, $panierPrice, $panierLibelle, $panierImg, $panierKey);
+
+    // On sauve le nouveau tablo dans les variables session
+    $_SESSION['panier']['quantite'] = $PanierQty;
+    $_SESSION['panier']['price'] = $panierPrice;
+    $_SESSION['panier']['libelle'] = $panierLibelle;
+    $_SESSION['panier']['img'] = $panierImg;
+    $_SESSION['panier']['id'] = $panierKey;
+
+    $totaux = 0;
+    $article = 0;
+
+    foreach ($PanierQty as $key => $value) {
+        $total = $panierPrice[$key] * $value;
+        $totaux += $total;
+        $article += $value;
+    }
+    $qty = $panierQty;
+    $price = $panierPrice;
+    $libelle = $panierLibelle;
+    $img = $panierImg;
+} else {
+    $_SESSION['panier']['quantite'] = $qty;
+    $_SESSION['panier']['price'] = $price;
+    $_SESSION['panier']['libelle'] = $libelle;
+    $_SESSION['panier']['img'] = $img;
+    $_SESSION['panier']['id'] = $key;
+
+    var_dump('quand panier était vide', $qty, $price, $libelle, $img, $key);
+}
 
 echo '<br />';
 

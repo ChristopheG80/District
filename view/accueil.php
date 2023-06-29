@@ -29,7 +29,7 @@
             <input type="hidden" name="image[<?= $row2['id']; ?>]" value="<?= $row2['img']; ?>" />
             <div class="card-body overflow-hidden">
               <h5 class="card-title"><?= $row2['libelle']; ?></h5>
-              <input type="hidden" name="libelle[<?= $row2['id']; ?>]" value="<?= $row2['libelle']; ?>" />
+              <input type="hidden" name="libelle[<?= $row2['id']; ?>]" value="<?= $row2['lib']; ?>" />
               <p class="card-text"><?= $row2['descr']; ?></p>
               <p><input type="hidden" name="price[<?= $row2['id']; ?>]" value="<?= $row2['prix']; ?>" /><?= $row2['prix']; ?><?= $devise; ?></p>
               <p><input type="number" min="0" value="" max="50" id="qty[<?= $row2['id']; ?>]" class="w-25" name="qty[<?= $row2['id']; ?>]" />
