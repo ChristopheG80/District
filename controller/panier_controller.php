@@ -1,7 +1,9 @@
 <?php
 
-$qty = $_REQUEST['qty'];
-$price = $_REQUEST['price'];
+var_dump('début de panier Panier Ctrl',isset($_SESSION['panier']['quantite']));
+
+$qty = intval($_REQUEST['qty']);
+$price = floatval($_REQUEST['price']);
 $libelle = $_REQUEST['libelle'];
 $img = $_REQUEST['image'];
 $totaux = 0;
@@ -13,7 +15,7 @@ $article = 0;
 // echo '<br />';
 
 // Pour enlever les éléments vides qui arrêtent le foreach
-foreach ($qty as $key => $value) {
+foreach ($libelle as $key => $value) {
     if ($value == "" || $value == 0) {
         unset($qty[$key]);
         unset($libelle[$key]);
@@ -25,8 +27,8 @@ foreach ($qty as $key => $value) {
 // var_dump($_SESSION);
 
 
-foreach ($qty as $key => $value) {
-    $total = $price[$key] * $value;
+foreach ($libelle as $key => $value) {
+    $total = floatval($price[$key]) * intval($value);
     $totaux += $total;
     $article += $value;
     // echo '<br />quantité= ' . $value . '<br />';
@@ -35,15 +37,51 @@ foreach ($qty as $key => $value) {
 }
 echo '<br />';
 
-var_dump(isset($_SESSION['panier']['quantite']));
+
+$panierQty = [];
+    $panierPrice = [];
+    $panierLibelle = [];
+    $panierImg = [];
+
+    
+
+
+var_dump('[panier]',isset($_SESSION['panier']['quantite']),'[quantite]');
 if (isset($_SESSION['panier']['quantite'])) {
 
     // On sauve ce qui est dans le panier
 
-    $panierQty = $_SESSION['panier']['quantite'];
-    $panierPrice = $_SESSION['panier']['price'];
-    $panierLibelle = $_SESSION['panier']['libelle'];
-    $panierImg = $_SESSION['panier']['img'];
+    array_push($panierQty, $_SESSION['panier']['quantite']);
+    
+    array_push($panierPrice,$_SESSION['panier']['price']);
+    var_dump('DANS LE if');
+    array_push($panierLibelle,$_SESSION['panier']['libelle']);
+    var_dump('DANS LE if');
+    array_push($panierImg,$_SESSION['panier']['img']);
+    var_dump('DANS LE if');
+    echo '<br>';echo '<br>';echo '<br>';
+    // $toto=array_search($libelle,$_SESSION['panier']['libelle'],true);
+    $toto= array_search($libelle, $panierLibelle);
+    var_dump('toto',$toto);
+    var_dump('Panier Qty',$panierQty);
+
+    echo '<br>';echo '<br>';echo '<br>';
+    var_dump('in_Array');
+    echo '<br>';echo '<br>';echo '<br>';
+    var_dump($libelle);
+    echo '<br>';echo '<br>';echo '<br>';
+    var_dump($toto);
+    echo '<br>';echo '<br>';echo '<br>';
+    var_dump($_SESSION['panier']['libelle']);
+    echo '<br>';echo '<br>';echo '<br>';
+    var_dump('fin');
+
+    echo '<br>';echo '<br>';echo '<br>';
+
+var_dump(isset($_SESSION['panier']['id']));
+
+
+    
     $panierKey = $_SESSION['panier']['id'];
 
     // On efface le contenu de la session
@@ -57,7 +95,18 @@ if (isset($_SESSION['panier']['quantite'])) {
     // On ajoute au tablo temporaire les plats choisis
     array_push($panierQty, $qty);
     array_push($panierPrice, $price);
+    echo '<br>';
+    echo '<br>';
+    echo '<br>';
+    
+    var_dump('avant ajout',$panierLibelle, $libelle);
+    echo '<br>';
+    echo '<br>';
+    echo '<br>';
+    echo '<br>';
     array_push($panierLibelle, $libelle);
+    var_dump($panierLibelle, $libelle);
+
     array_push($panierImg, $img);
     array_push($panierKey, $key);
 
@@ -70,6 +119,7 @@ if (isset($_SESSION['panier']['quantite'])) {
     $_SESSION['panier']['libelle'] = $panierLibelle;
     $_SESSION['panier']['img'] = $panierImg;
     $_SESSION['panier']['id'] = $panierKey;
+    var_dump($_SESSION['panier']['libelle']);
 
     $totaux = 0;
     $article = 0;

@@ -1,6 +1,9 @@
 <?php
 $conn=connect_bd();
 // Réception de la commande pour insertion dans la base et envoi par email une confirmation
+
+var_dump('Réception ctrl',isset($_SESSION['panier']['quantite']));
+
 $qty2 =      $_SESSION['panier']['quantite'];
 $price2 =    $_SESSION['panier']['price'];
 $libelle2 =  $_SESSION['panier']['libelle'];

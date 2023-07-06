@@ -28,7 +28,7 @@
       <ul class="navbar-nav">
     
     <?php
-        if($_SESSION['Auth'] == 'ok'){
+        if(isset($_SESSION['Auth']) && $_SESSION['Auth'] == 'ok'){
           ?>
       <li class="nav-item">
           Bonjour <?= $_SESSION['firstname'];?>

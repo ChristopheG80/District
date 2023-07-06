@@ -307,6 +307,7 @@ class categorie
         $req->execute();
         return $req->fetchAll();
     }
+    
 }
 
 class plat
@@ -458,6 +459,10 @@ class plat
         $req->bindValue(':id_cat', $id_cat, PDO::PARAM_INT);
         $req->execute();
         return $req->fetchAll();
+    }
+    public function adminShowPlatCat(){
+        $conn = connect_bd();
+        $req = $conn->prepare("SELECT id ide, libelle lib, `image` img, `description` descr, prix, id_categorie idcat, c.libelle catPlat FROM plat p JOIN categorie c ON c.id=p.id_cat;");
     }
 }
 

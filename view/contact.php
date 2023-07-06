@@ -7,7 +7,7 @@
                     </div>
                     <div class="col-12 col-md-6 justify-content-center text-center my-2">
                     <label for="firstnameDistrict">Pr&eacute;nom</label><br />
-                    <input type="text" id="firstnameDistrict" name="firstnameDistrict" class="btn-outline-district district-color text-center rounded" value="<?= $_SESSION['Auth'] == 'ok' ? $_SESSION['firstname'] : ''; ?>" />
+                    <input type="text" id="firstnameDistrict" name="firstnameDistrict" class="btn-outline-district district-color text-center rounded" value="<?= (isset($_SESSION['Auth']) && $_SESSION['Auth'] == 'ok') ? $_SESSION['firstname'] : ''; ?>" />
                 </div>
                     <div class="col-12 col-md-6 justify-content-center text-center my-2">
                     <label for="emailDistrict">Email</label><br />
@@ -23,7 +23,7 @@
                 </div>
                 <div class="col-12 my-2 justify-content-center text-center my-2">
                     <input type="submit" value="Envoyer le message" name="messageDistrict" id="messageDistrict" class="btn btn-outline-district district-color" />
-                    <p id="infoMail"><?= $infoMail != "" ? $infoMail : ''; ?></p>
+                    <p id="infoMail"><?= (isset($infoMail) && $infoMail != "") ? $infoMail : ''; ?></p>
                 </div>
             </div>
         </div>
