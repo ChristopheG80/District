@@ -1,6 +1,6 @@
 <?php
 
-include "mail_controller.php";
+require "mail_controller.php";
 // var_dump('POST', $_POST);
 $emailCust=$_POST['emailDistrict'];
 

@@ -75,7 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // var_dump('$_POST', $_POST);
+    var_dump('$_POST', $_POST);
 
     // Identifiant
     if (isset($_POST['signing']) && $_POST['signing'] == "Connexion") {

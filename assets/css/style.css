@@ -35,9 +35,10 @@ body h1, h2, h3, h4,h5, h6, p, a{
 
 .bg-district{
     background-color: #970747;
-    height: 6em;
 }
-
+.bg-district-h{
+  min-height: 6em;
+}
 .btn-outline-district, .btn-outline-district:hover{
     color: #970747;
     border-color: #970747;
@@ -115,4 +116,16 @@ input.districtColor{
 }
 footer{
   height: 50px;
+}
+.img_cat{
+  width: 18em;
+}
+.img_card{
+  width: 12rem;
+  height:12rem;
+}
+
+.card_fw{
+  width: 24rem;
+  height: 32rem;
 }

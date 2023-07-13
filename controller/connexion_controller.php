@@ -1,16 +1,9 @@
 <?php
- var_dump('vous êtes bien arrivé dans contrôleur');
-if(isset($_POST['signing'])){
-    $firstnameIden = $_POST['firstnameSignIn']!=""?$_POST['firstnameSignIn']:null;
-    // $lastnameIden = $_POST['lastnameSignIn']!=""?$_POST['lastnameSignIn']:null;
+ if(isset($_POST['signing'])){
     $identif = $_POST['IdentiSignIn']!=""?$_POST['IdentiSignIn']:null;
     $pwsIden = $_POST['PwsSignIn']!=""?$_POST['PwsSignIn']:null;
-    if(!is_null($identif) && !is_null($pwsIden) && !is_null($firstnameIden)){
-        // if(!is_null($identif) && !is_null($pwsIden) && !is_null($firstnameIden) && !is_null($lastnameIden)){
+    if(!is_null($pwsIden) && !is_null($identif)){
         $_SESSION['Auth'] = "ok";
-        $_SESSION['firstname'] = $firstnameIden;
-        //$_SESSION['lastname'] = $lastnameIden;
+        $_SESSION['firstname'] = $identif;
     }
-    // echo $identif;
-    // echo $pwsIden;
 }

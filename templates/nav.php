@@ -1,10 +1,10 @@
 <nav class="navbar navbar-expand-lg sticky-top">
-<div class="container-fluid bg-district">
+<div class="container-fluid bg-district bg-district-h">
     <a class="navbar-brand" href="#"><img src="images_the_district/the_district_brand/logo.png" alt="The District" id="logo_nav"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <div class="collapse navbar-collapse bg-district" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link fw-bolder texte-blanc" aria-current="page" href="index.php">Accueil</a>
