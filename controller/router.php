@@ -76,35 +76,47 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     var_dump('$_POST', $_POST);
-
+    if ( isset($_POST['Commande'])) {
+        include "controller/commandePlat_controller.php";
+    }
+        
     // Identifiant
     if (isset($_POST['signing']) && $_POST['signing'] == "Connexion") {
         include "controller/connexion_controller.php";
     }
+    
     if (isset($_POST['signupg']) && $_POST['signupg'] == "Connexion") {
         include "controller/signup_controller.php";
     }
+    
     if (isset($_POST['catego'])) {
         $catego = intval($_POST['catego']);
         // var_dump($catego);
         include "controller/plat_controller.php";
     }
-    if (isset($_POST['Commande'])) {
-        include "controller/panier_controller.php";
-    }
+    // if (isset($_POST['Commande'])) {
+    //     include "controller/panier_controller.php";
+    // }
     if (isset($_POST['messageDistrict']) && $_POST['messageDistrict'] == "Envoyer le message") {
         include "controller/sendmail_controller.php";
     }
-    if (isset($_POST['passerCommande']) && $_POST['passerCommande'] == "Commander") {
-        include "controller/reception_controller.php";
+    
+
+    if(isset($_POST['quantiteCom'])) {
+        include "controller/cdePlat_controller.php";
+
     }
+
+
+
+
     if (isset($_POST['last_cat_p']) && $_POST['last_cat_p'] == "<-") {
         $page_cat--;
         include "controller/categories_controller.php";
     }
     if (isset($_POST['next_cat_p']) && $_POST['next_cat_p'] == "->") {
         $page_cat = isset($page_cat) ? $page_cat : 1;
-        $page_cat ++;
+        $page_cat++;
         include "controller/categories_controller.php";
     }
     if (isset($_POST['last_plat_p']) && $_POST['last_plat_p'] == "<-") {
@@ -123,6 +135,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['tableN'])) {
         include "controller/admin/admin.php";
     }
-    
+
     //searchbtn
 }

@@ -2,38 +2,6 @@
 // include_once "connexion.php";
 $conn = connect_bd();
 
-class toto
-{
-    private $user_name;
-    private $user_email;
-
-    public function __construct($user_name, $user_email)
-    {
-        $this->user_name = $user_name;
-        $this->user_email = $user_email;
-    }
-
-    public function set_utilisateur($new_user_name = null, $new_user_email = null)
-    {
-        if (!is_null($new_user_name) && !is_null($new_user_email)) {
-            if (!empty($new_user_name) && !empty($new_user_email)) {
-                $this->user_name = $new_user_name;
-                $this->user_email = $new_user_email;
-            }
-        }
-    }
-    public function get_utilisateur_name()
-    {
-        return $this->user_name;
-    }
-    public function get_utilisateur_email()
-    {
-        return $this->user_email;
-    }
-}
-
-$catPop = new toto('toto', 'toto@titi.com');
-
 class utilisateur
 {
     private $user_name;
@@ -201,6 +169,23 @@ class commande
         return $req;
     }
 
+    public function enreg_commande($id, $qte, $total, $email, $phone, $flname, $addresse){
+        $conn = connect_bd();
+        $etat="";
+        $req = $conn->prepare("INSERT INTO `commande`(`id_plat`, `quantite`, `total`, `date_commande`, `etat`, `nom_client`, `telephone_client`, `email_client`, `adresse_client`) 
+        VALUES (:id_plat, :qte, :total, NOW(), :etat, :flname, :phone, :email, :addresse)");
+        $req->bindValue(':id_plat', $id, PDO::PARAM_INT);
+        $req->bindValue(':qte', $qte, PDO::PARAM_INT);
+        $req->bindValue(':total', $total, PDO::PARAM_INT);
+        $req->bindValue(':etat', $etat, PDO::PARAM_STR);
+        $req->bindValue(':phone', $phone, PDO::PARAM_STR);
+        $req->bindValue(':flname', $flname, PDO::PARAM_STR);
+        $req->bindValue(':addresse', $addresse, PDO::PARAM_STR);
+        $req->bindValue(':email', $email, PDO::PARAM_STR);
+        $req->execute();
+        return $req;
+    }
+
     private function delete_commande_livree()
     {
         $req = 'DELETE 
@@ -358,6 +343,13 @@ class plat
     public function get_plat_active()
     {
         return $this->active;
+    }
+    public function show_one_plat($idee){
+        $conn = connect_bd();
+        $req = $conn->prepare('SELECT `id`, `libelle`, `description`, `prix`, `image` FROM `plat` WHERE id=:idee;');
+        $req->bindValue(':idee', $idee, PDO::PARAM_INT);
+        $req->execute();
+        return $req;
     }
     public function delete_plat_inactif()
     {

@@ -16,8 +16,9 @@
               <h5 class="card-title"><?= $row['libelle']; ?></h5>
               <input type="hidden" name="libelle[<?= $row['id']; ?>]" value="<?= $row['libelle']; ?>">
               <p class="card-text"><?= $row['description']; ?></p>
-              <p><input type="hidden" name="cle[<?= $row['id']; ?>]" value="<?= $row['id']; ?>"><input type="hidden" name="price[<?= $row['id']; ?>]" value="<?= $row['prix']; ?>"><?= $row['prix']; ?><?= $devise; ?></p>
-              <p><input type="number" min="0" value="" max="50" id="qty[<?= $row['id']; ?>]" class="w-25" name="qty[<?= $row['id']; ?>]">
+              <p><input type="hidden" name="cle[<?= $row['id']; ?>]" value="<?= $row['id']; ?>">
+              <input type="hidden" name="price[<?= $row['id']; ?>]" value="<?= $row['prix']; ?>"><?= $row['prix']; ?><?= $devise; ?></p>
+              <p><input type="hidden" min="0" value="" max="50" id="qty[<?= $row['id']; ?>]" class="w-25" name="qty[<?= $row['id']; ?>]">
                 <input type="submit" name="Commande[<?= $row['id']; ?>]" class="btn btn-primary" value="Commander">
               </p>
             </div>
