@@ -10,7 +10,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         switch ($choice) {
             case "cat":
                 include "view/search.php";
-
                 include "controller/categories_controller.php";
                 break;
             case "lesplats":
@@ -75,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    var_dump('$_POST', $_POST);
+    // var_dump('$_POST', $_POST);
     if ( isset($_POST['Commande'])) {
         include "controller/commandePlat_controller.php";
     }
@@ -107,9 +106,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     }
 
-
-
-
     if (isset($_POST['last_cat_p']) && $_POST['last_cat_p'] == "<-") {
         $page_cat--;
         include "controller/categories_controller.php";
@@ -136,5 +132,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         include "controller/admin/admin.php";
     }
 
-    //searchbtn
+    if (isset($_POST['modCat']) || isset($_POST['modPlat'])) {
+        include "controller/admin/update.php";
+    }
+
+    if (isset($_POST['delCat']) || isset($_POST['delPlat'])) {
+        include "controller/admin/delete.php";
+    }
+    if (isset($_POST['newCat']) || isset($_POST['newPlat'])) {
+        include "controller/admin/insert.php";
+    }
+
 }

@@ -171,7 +171,7 @@ class commande
 
     public function enreg_commande($id, $qte, $total, $email, $phone, $flname, $addresse){
         $conn = connect_bd();
-        $etat="";
+        $etat="En préparation";
         $req = $conn->prepare("INSERT INTO `commande`(`id_plat`, `quantite`, `total`, `date_commande`, `etat`, `nom_client`, `telephone_client`, `email_client`, `adresse_client`) 
         VALUES (:id_plat, :qte, :total, NOW(), :etat, :flname, :phone, :email, :addresse)");
         $req->bindValue(':id_plat', $id, PDO::PARAM_INT);
@@ -292,7 +292,12 @@ class categorie
         $req->execute();
         return $req->fetchAll();
     }
-    
+    public function listCat(){
+        $conn = connect_bd();
+        $req = $conn->prepare("SELECT id, libelle lib FROM categorie WHERE active='Yes';");
+        $req->execute();
+        return $req->fetchAll();
+    }
 }
 
 class plat
@@ -455,7 +460,10 @@ class plat
     public function adminShowPlatCat(){
         $conn = connect_bd();
         $req = $conn->prepare("SELECT id ide, libelle lib, `image` img, `description` descr, prix, id_categorie idcat, c.libelle catPlat FROM plat p JOIN categorie c ON c.id=p.id_cat;");
+        $req->execute();
+        return $req->fetchAll();
     }
+    
 }
 
 

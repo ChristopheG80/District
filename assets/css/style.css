@@ -132,3 +132,11 @@ footer{
 #bas_page{
   height: 12rem;
 }
+.img_small{
+  height: 5rem;
+  width: 5rem;
+  border-style:solid;
+  border-color:#970747;
+  border-width: 10 em;
+  border-radius: 15%;
+}

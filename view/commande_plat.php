@@ -6,6 +6,7 @@
             ?>
                 <div class="col-12">
                     <h1><?= $row->libelle; ?></h1>
+                    <input type="hidden" value="<?= $row->libelle; ?>" name="libName">
                 </div>
                 <div class="col-3">
                     <img src="images_the_district/food/<?= $row->image; ?>" alt="<?= $row->libelle; ?>" class="img_card rounded">

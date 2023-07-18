@@ -3,6 +3,15 @@
 <form action="index.php" method="post">
     <div class="container-fluid content">
         <div class="row">
+            <?php
+                if(isset($infoMail)){
+                    ?>
+                    <div class="col-12 text-center my-2 districtColor">
+                <h1><?= $infoMail; ?></h1>
+            </div>
+            <?php        
+                }
+            ?>
             <div class="col-12 text-center my-2 districtColor">
                 <h1>Catégories les plus populaires</h1>
             </div>
