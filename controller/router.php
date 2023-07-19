@@ -75,6 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // var_dump('$_POST', $_POST);
+    
     if ( isset($_POST['Commande'])) {
         include "controller/commandePlat_controller.php";
     }

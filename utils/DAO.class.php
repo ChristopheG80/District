@@ -270,7 +270,7 @@ class categorie
     public function showAllCat()
     {
         $conn = connect_bd();
-        $req = $conn->prepare("SELECT id ide, libelle lib, `image` img, active FROM categorie;");
+        $req = $conn->prepare("SELECT id ide, libelle lib, `image` img, active FROM categorie ORDER BY libelle ;");
         $req->execute();
         return $req->fetchAll();
     }
@@ -294,7 +294,37 @@ class categorie
     }
     public function listCat(){
         $conn = connect_bd();
-        $req = $conn->prepare("SELECT id, libelle lib FROM categorie WHERE active='Yes';");
+        $req = $conn->prepare("SELECT id, libelle lib FROM categorie WHERE active='Yes' ORDER BY libelle;");
+        $req->execute();
+        return $req->fetchAll();
+    }
+    public function delOneCat($id){
+        $conn = connect_bd();
+        $req = $conn->prepare("DELETE FROM categorie WHERE id=:id;");
+        $req->bindValue('id',$id,PDO::PARAM_INT);
+        return $req->execute();   
+    }
+    public function updateOneCat($id, $lib, $img, $active){
+        $conn = connect_bd();
+        $req = $conn->prepare("UPDATE categorie SET `libelle`=:lib,`image`=:img,`active`=:active WHERE id=:id;");
+        $req->bindValue('id',$id,PDO::PARAM_INT);
+        $req->bindValue('lib',$lib,PDO::PARAM_STR);
+        $req->bindValue('img',$img,PDO::PARAM_STR);
+        $req->bindValue('active',$active,PDO::PARAM_STR);
+        $req->execute();
+        return $req->fetchAll();
+    }
+    public function addOneCat($lib, $img, $active){
+        $conn = connect_bd();
+        $req = $conn->prepare("INSERT INTO `categorie`(`libelle`, `image`, `active`)
+        VALUES(
+            :catLib,
+            :catImg,
+            :catActive
+        )");
+        $req->bindValue('catLib',$lib,PDO::PARAM_STR);
+        $req->bindValue('catImg',$img,PDO::PARAM_STR);
+        $req->bindValue('catActive',$active,PDO::PARAM_STR);
         $req->execute();
         return $req->fetchAll();
     }
@@ -444,7 +474,7 @@ class plat
     public function showAllPlat()
     {
         $conn = connect_bd();
-        $req = $conn->prepare("SELECT id ide, libelle lib, `image` img, `description` descr, prix, id_categorie idcat FROM plat;");
+        $req = $conn->prepare("SELECT id ide, libelle lib, `image` img, `description` descr, prix, id_categorie idcat, active FROM plat ORDER BY libelle;");
         $req->execute();
         return $req->fetchAll();
     }
@@ -462,6 +492,52 @@ class plat
         $req = $conn->prepare("SELECT id ide, libelle lib, `image` img, `description` descr, prix, id_categorie idcat, c.libelle catPlat FROM plat p JOIN categorie c ON c.id=p.id_cat;");
         $req->execute();
         return $req->fetchAll();
+    }
+    public function delOnePlat($id){
+        $conn = connect_bd();
+        $req = $conn->prepare("DELETE FROM `plat` WHERE id=:id AND id NOT IN (SELECT id_plat FROM commande WHERE id_plat=:id);");
+        $req->bindValue('id',$id,PDO::PARAM_INT);
+        return $req->execute();
+    }
+    public function updateOnePlat($id,$platLib,$platPrice,$platDescr,$platImg,$platCat,$platActive){
+        $conn = connect_bd();
+        $req = $conn->prepare("UPDATE `plat` SET 
+            `libelle`=:platLib,
+            `description`=:platDescr,
+            `prix`=:platPrice,
+            `image`=:platImg,
+            `id_categorie`=:platCat,
+            `active`=:platActive
+            WHERE id=:id;");
+        $req->bindValue('id',$id,PDO::PARAM_INT);
+        $req->bindValue('platLib',$platLib,PDO::PARAM_STR);
+        $req->bindValue('platPrice',$platPrice,PDO::PARAM_STR);
+        $req->bindValue('platDescr',$platDescr,PDO::PARAM_STR);
+        $req->bindValue('platImg',$platImg,PDO::PARAM_STR);
+        $req->bindValue('platActive',$platActive,PDO::PARAM_STR);
+        $req->bindValue('platCat',$platCat,PDO::PARAM_INT);
+        return $req->execute();
+    }
+    public function addOnePlat($platLib,$platPrice,$platDescr,$platImg,$platCat,$platActive){
+        $conn = connect_bd();
+        $req = $conn->prepare("INSERT INTO `plat`(`libelle`, `description`, `prix`, `image`, `id_categorie`, `active`) 
+        VALUES (:platLib,:platDescr,:platPrice,:platImg,:platCat,:platActive);");
+        $req->bindValue('platLib',$platLib,PDO::PARAM_STR);
+        $req->bindValue('platPrice',$platPrice,PDO::PARAM_STR);
+        $req->bindValue('platDescr',$platDescr,PDO::PARAM_STR);
+        $req->bindValue('platImg',$platImg,PDO::PARAM_STR);
+        $req->bindValue('platActive',$platActive,PDO::PARAM_STR);
+        $req->bindValue('platCat',$platCat,PDO::PARAM_INT);
+        return $req->execute();
+
+    }
+    public function countPlatCat($id){
+        $conn = connect_bd();
+        $req = $conn->prepare("SELECT COUNT(`id_categorie`) cpt FROM `plat` 
+        WHERE `id_categorie`=:id;");
+        $req->bindValue('id',$id,PDO::PARAM_INT);
+        $req->execute();
+        return $req->fetchAll(PDO::FETCH_ASSOC);
     }
     
 }
