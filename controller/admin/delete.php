@@ -11,7 +11,7 @@ if (!is_null($idPlat)) {
     $platDel = $plat->delOnePlat($idplat);
     var_dump($platDel);
     
-    if($catDel){
+    if($platDel){
         $message="Ce plat a été supprimé.";
     }
     else{
@@ -21,7 +21,7 @@ if (!is_null($idPlat)) {
 
 // Suppression d'une catégorie
 if (!is_null($idCat)) {
-    $message="On entre Cette catégorie a été supprimée.";
+    $message="On entre dans la partie catégorie.";
     var_dump($message);
 
     $cat = new categorie();

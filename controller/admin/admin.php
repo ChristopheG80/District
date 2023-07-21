@@ -1,7 +1,7 @@
 <?php
-include "../../utils/connexion.php";
+include "utils/connexion.php";
 // echo 'Administration de la base de données';
-include "../../utils/DAO.class.php";
+include "utils/DAO.class.php";
 
 
 $conn = connect_bd();
