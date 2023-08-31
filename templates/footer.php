@@ -1,7 +1,12 @@
 <div class="sticky-bottom my-2 p-2">
     
-<footer class="footer position-absolute top-100 start-50 translate-middle bg_footer">
-<div class="col-6 text-center my-2 mx-auto bg_footer"><img src="images_the_district/socialnetwork/instagram.png" class="float-start" alt="instagram"><img src="images_the_district/socialnetwork/instagram.png" class="float-end" alt="instagram"></div>
+<footer class="footer position-absolute bg_footer d-flex">
+<div class="col-6 text-center my-2 mx-auto bg_footer">
+    <img src="images_the_district/socialnetwork/instagram.png" class="inline" alt="instagram">
+    <img src="images_the_district/socialnetwork/facebook.png" class="inline" alt="facebook">
+    <img src="images_the_district/socialnetwork/linkedin.png" class="inline" alt="linkedin">
+    <img src="images_the_district/socialnetwork/twitter.png" class="inline" alt="twitter">
+</div>
 <div class="col-6 text-center my-2 mx-auto bg_footer">
 <strong>
         <a href="index.php?choix=pol" target="_blank" class="float-start">Politique de confidentialité</a>

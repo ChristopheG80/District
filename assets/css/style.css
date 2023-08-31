@@ -126,8 +126,8 @@ footer{
 }
 
 .card_fw{
-  width: 24rem;
-  height: 32rem;
+  width: 36rem;
+  height: 24rem;
 }
 #bas_page{
   height: 12rem;
@@ -140,3 +140,7 @@ footer{
   border-width: 10 em;
   border-radius: 15%;
 }
+.img_plat{
+  width: 16rem;
+  height:16rem;
+} 
